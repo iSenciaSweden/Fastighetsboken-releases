@@ -43,7 +43,6 @@ jobs:
               assert hashlib.sha256((target/name).read_bytes()).hexdigest() == digest
           feed = json.loads((target/'releases.win.json').read_text())
           assert all(a['Version'] == version[1:] and a['PackageId'] == 'Fastighetsboken' for a in feed['Assets'])
-          (target/'SHA256SUMS.json').unlink()
       - name: Publish complete release
         shell: bash
         run: |
